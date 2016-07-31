@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+
+    <div class="layout">
+      <div class="header">
+          <div class="header-container">
+              <h1 class="header-container__user-logo">logo</h1>
+              <p class="header-container__user-email">user@email</p>
+          </div>
+      </div>
+      <div class="content">
+        <div class="post-container">
+        </div>
+      </div>
+
+      <div class="footer">
+      </div>
+    </div>
+
+    <script type="text/x-handlebars-templates" id="post-container-template">
+      {{#if exist}}
+        <div class="post-container__header">
+        </div>
+
+        <div class="post-container__comments">
+        </div>
+
+        <div class="posts-container__related-posts">
+        </div>
+      {{else}}
+        <div class="post-container__post__not-found">
+          <img src="{{imgUrl}}" alt="Post not found"/>
+        </div>
+      {{/if}}
+    </script>
+
+    <script type="text/x-handlebars-templates" id="post-header-template">
+      {{#header elem}}
+        <figure class="post-container__header-figure">
+          <img src="{{imgUrl}}" alt="Post image"/>
+          <figcaption>{{userId}}: {{description}}</figcaption>
+        </figure>
+      {{/header}}
+    </script>
+
+    <script type="text/x-handlebars-templates" id="post-comments-template">
+      {{#each comments}}
+        <p>{{username}}: {{text}}</p>
+      {{/each}}
+    </script>
+
+    <script type="text/x-handlebars-templates" id="post-list-template">
+      <div class="post-list">
+        {{#each posts}}
+          {{> post-preview mixinClass="related-posts-list__post"}}
+        {{/each}}
+      </div>
+    </script>
+
+    <script type="text/x-handlebars-templates" id="post-template">
+      <div class="post-preview {{mixinClass}}">
+            <div class="post-preview__island">
+                <div class="post-preview__img-wrapper">
+                    <img class="post-preview__img" src="{{imgUrl}}"></img>
+                </div>
+                <div class="post-preview__description">{{bold description}}</div>
+            </div>
+        </div>
+    </script>
+
+    <script src="libs/handlebars/handlebars.min.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="/post.js"></script>
+    <script src="/data.js"></script>
+    <script src="/errors.js"></script>
+  </body>
+</html>
