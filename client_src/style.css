@@ -206,15 +206,15 @@ a {
 .header-container__user-logo {
     position: absolute;
     width: 10%;
-    left:5%;
-    top:1%;
+    left: 5%;
+    top: 1%;
 }
 .header-container__user-email {
-    flex-grow:1;
+    flex-grow: 1;
     position: absolute;
-    width:10%;
-    right:5%;
-    top:1%;
+    width: 10%;
+    right: 5%;
+    top: 1%;
     text-align: right;
 }
 
@@ -232,8 +232,8 @@ a {
 }
 
 .post-container__post__not-found img {
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .comments {

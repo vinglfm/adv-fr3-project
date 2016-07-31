@@ -24,7 +24,7 @@ $(document).ready(function(){
 
     Handlebars.registerHelper('header', function(elem, options){
       return options.fn({
-        userId:elem.userId,
+        userId: elem.userId,
         imgUrl: elem.imgUrl,
         description: elem.description
        });
@@ -43,7 +43,6 @@ $(document).ready(function(){
   }
 
   function renderContainer() {
-    console.log(post);
     var html = postContainerTemplate({exist: post != null,
       imgUrl: Errors.notFoundImgUrl});
     $('.post-container').html(html);
