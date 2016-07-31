@@ -1,0 +1,20 @@
+{
+  "name": "adv-fr3",
+  "version": "1.0.0",
+  "description": "Advanced front end course project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinglfm/adv-fr3.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinglfm/adv-fr3/issues"
+  },
+  "homepage": "https://github.com/vinglfm/adv-fr3#readme"
+}

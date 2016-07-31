@@ -1,0 +1,12 @@
+{
+  "name": "adv-fr3",
+  "version": "1.0.0",
+  "homepage": "https://github.com/vinglfm/adv-fr3",
+  "authors": [
+    "Andrew Pryshchepa <vinglfm@gmail.com>"
+  ],
+  "dependencies": {
+    "jquery": "^2.1.0",
+    "handlebars": "^4.0.5"
+  }
+}
