@@ -1,27 +1,31 @@
 $(document).ready(function(){
 
-  var postContainerTemplateRow = $('#post-container-template').html();
-  var postContainerTemplate = Handlebars.compile(postContainerTemplateRow);
-
   var post = Data.getCurrentPost();
 
-  renderContainer();
+  if(post == null) {
+    renderNotFound();
+    return;
+  }
 
-  if(post != null) {
-    var postTemplateRow = $('#post-template').html();
-    var postsTemplateRow = $('#post-list-template').html();
+  render();
 
-    var postTemplate = Handlebars.compile(postTemplateRow);
-    var postsTemplate = Handlebars.compile(postsTemplateRow);
-    Handlebars.registerPartial('post-preview', postTemplate);
-    Handlebars.registerHelper('bold', function(text, options) {
-      var escapedText = Handlebars.Utils.escapeExpression(text);
-      return new Handlebars.SafeString('<b>' + escapedText + '</b>');
-    });
+  function render() {
+    renderPostHeader();
+    renderPostComments();
+    renderRelatedPosts();
+  }
 
+  function renderNotFound() {
+    var postNotFoundTemplateRow = $('#post-not-found-template').html();
+    var postNotFoundTemplate = Handlebars.compile(postNotFoundTemplateRow);
+    var html = postNotFoundTemplate({exist: post != null,
+      imgUrl: Errors.notFoundImgUrl});
+    $('.post-container').html(html);
+  }
+
+  function renderPostHeader() {
     var headerTemplateRow = $('#post-header-template').html();
     var headerTemplate = Handlebars.compile(headerTemplateRow);
-
     Handlebars.registerHelper('header', function(elem, options){
       return options.fn({
         userId: elem.userId,
@@ -29,32 +33,15 @@ $(document).ready(function(){
         description: elem.description
        });
     });
-
-    var commentsTemplateRow = $('#post-comments-template').html();
-    var commentsTemplate = Handlebars.compile(commentsTemplateRow);
-
-    render();
-  }
-
-  function render() {
-    renderHeader();
-    renderComments();
-    renderRelatedPosts();
-  }
-
-  function renderContainer() {
-    var html = postContainerTemplate({exist: post != null,
-      imgUrl: Errors.notFoundImgUrl});
-    $('.post-container').html(html);
-  }
-
-  function renderHeader() {
     var html = headerTemplate({elem: post});
     $('.post-container__header').html(html);
   }
 
-  function renderComments() {
+  function renderPostComments() {
     var postComments = Data.getPostComments();
+
+    var commentsTemplateRow = $('#post-comments-template').html();
+    var commentsTemplate = Handlebars.compile(commentsTemplateRow);
 
     var html = commentsTemplate({comments: postComments});
     $('.post-container__comments').html(html);
@@ -62,7 +49,16 @@ $(document).ready(function(){
 
   function renderRelatedPosts() {
     var relatedPosts = Data.getRelatedPosts();
+    var postTemplateRow = $('#post-template').html();
+    var postsTemplateRow = $('#post-list-template').html();
 
+    var postTemplate = Handlebars.compile(postTemplateRow);
+    var postsTemplate = Handlebars.compile(postsTemplateRow);
+    Handlebars.registerPartial('post-preview', postTemplate);
+    Handlebars.registerHelper('boldEscaped', function(text, options) {
+      var escapedText = Handlebars.Utils.escapeExpression(text);
+      return new Handlebars.SafeString('<b>' + escapedText + '</b>');
+    });
     var html = postsTemplate({posts: relatedPosts});
     $('.posts-container__related-posts').html(html);
   }
