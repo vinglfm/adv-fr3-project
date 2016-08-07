@@ -22,7 +22,6 @@
             }]
         },
         getCurrentPost: function () {
-            // parse ?id=2 => 2
             var id = location.search.slice(1).split('=')[1];
             return this.getPost(id);
         },

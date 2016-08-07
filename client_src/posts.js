@@ -27,9 +27,6 @@ $( document ).ready( function () {
       }).join('');
     });
 
-    var html = postsTemplate({posts: Data.getPosts()});
-
-    $( '.posts-container__list' ).html(html);
     render();
     subscribeHandlers();
 

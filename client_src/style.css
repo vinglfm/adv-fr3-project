@@ -200,6 +200,41 @@ a {
     cursor: pointer;
     width: 100%;
 }
+.header-container {
+    display: flex;
+}
+.header-container__user-logo {
+    position: absolute;
+    width: 10%;
+    left: 5%;
+    top: 1%;
+}
+.header-container__user-email {
+    flex-grow: 1;
+    position: absolute;
+    width: 10%;
+    right: 5%;
+    top: 1%;
+    text-align: right;
+}
+
+.post-container__header-figure {
+    margin: 0px;
+}
+
+.post-container__comments {
+    margin-top: 5%;
+}
+
+.related-posts-list__post {
+    display: inline-block;
+    margin-top: 5%;
+}
+
+.post-container__post__not-found img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
 .comments {
     margin: 20px 0;
